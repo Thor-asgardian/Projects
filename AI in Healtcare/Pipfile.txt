@@ -1,0 +1,28 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+SpeechRecognition = "*"  # Camel case for PyPI
+pyaudio = "*"
+faiss-cpu = "*"
+pypdf = "*"
+langchain = ">=0.2.0"
+langchain-community = ">=0.2.0"
+langchain-huggingface = ">=0.0.8"
+sentence-transformers = "*"
+streamlit = "*"
+googletrans = "*"
+gtts = "*"
+pygame = "*"
+pydantic = ">=1.10.17"
+huggingface-hub = ">=0.23.0"
+deep-translator = "==1.11.4"
+numpy = "*"
+gradio = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
