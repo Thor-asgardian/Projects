@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Login
+Flask-WTF
+stripe
+python-dotenv # Useful for managing environment variables

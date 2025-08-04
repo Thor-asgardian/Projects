@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>My Wardrobe</h1>
+    {# Add a button to add items, assuming you have an 'add_item' route #}
+    {# <a href="{{ url_for('main.add_item') }}" class="btn btn-primary mb-3">Add New Item</a> #}
+    <div class="row">
+        {% for item in items %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ item.image_url }}" class="card-img-top" alt="{{ item.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">{{ item.category }}</p>
+                        <p class="card-text"><small>{{ item.description }}</small></p>
+                        {# Add buttons for editing or deleting items #}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <p>Your closet is empty. Start by adding some items!</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Upgrade to Premium</h1>
+    <p>Unlock advanced features and an enhanced experience.</p>
+    <div class="premium-features">
+        <h2>Premium Features Include:</h2>
+        <ul>
+            <li>Unlimited item uploads</li>
+            <li>AI-powered outfit recommendations</li>
+            <li>Outfit planning calendar</li>
+            <li>Ad-free browsing</li>
+            {# Add more premium features here #}
+        </ul>
+    </div>
+
+    <div class="payment-section">
+        <h2>Choose Your Plan</h2>
+        <p>Monthly Subscription: ${{ price }} {{ currency.upper() }}</p>
+        {# This button will trigger a POST request to initiate payment #}
+        {# You'll need JavaScript to handle the response and direct the user #}
+        <button id="upgrade-button" class="btn btn-success">Upgrade Now</button>
+        <p id="payment-message"></p>
+    </div>
+</div>
+
+<script>
+document.getElementById('upgrade-button').addEventListener('click', function() {
+    const messageElement = document.getElementById('payment-message');
+    messageElement.textContent = 'Processing...';
+    messageElement.style.color = 'orange';
+
+    fetch('/initiate-payment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            // Add CSRF token here if you have it enabled
+        },
+        // You might send the selected plan details here if you have multiple tiers
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // In a real integration, you'd redirect to a payment page or
+            // use a JS SDK to handle the payment flow.
+            // For this example, we'll simulate success redirection.
+            messageElement.textContent = data.message;
+            messageElement.style.color = 'green';
+            // Simulate a redirect after a short delay or based on user action
+            // For example, redirect to a page that shows a payment form or confirmation
+            // window.location.href = '/payment-processing-page'; // Replace with actual redirect
+            // Or if the payment_callback is the place for redirect:
+            window.location.href = '/payment-callback?payment_status=success'; // SIMULATED SUCCESS
+        } else {
+            messageElement.textContent = data.message;
+            messageElement.style.color = 'red';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        messageElement.textContent = 'An error occurred. Please try again.';
+        messageElement.style.color = 'red';
+    });
+});
+</script>
+{% endblock %}

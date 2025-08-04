@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Add a New Clothing Item</h2>
+    <form action="{{ url_for('add_item') }}" method="post" enctype="multipart/form-data">
+        <div>
+            <label for="name">Item Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="">Select a category</option>
+                <option value="Tops">Tops</option>
+                <option value="Bottoms">Bottoms</option>
+                <option value="Dresses">Dresses</option>
+                <option value="Outerwear">Outerwear</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Accessories">Accessories</option>
+            </select>
+        </div>
+        <div>
+            <label for="color">Color:</label>
+            <input type="text" id="color" name="color">
+        </div>
+        <div>
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+        </div>
+        <button type="submit">Add Item</button>
+    </form>
+{% endblock %}

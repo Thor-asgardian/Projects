@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome to your Virtual Closet!</h1>
+    <p>Organize your wardrobe, create outfits, and discover new styles.</p>
+    {% if current_user.is_authenticated %}
+        <p><a href="{{ url_for('main.closet') }}">Go to your Closet</a></p>
+        {% if current_user.is_premium %}
+            <p>You are a Premium Member!</p>
+            <p><a href="{{ url_for('main.premium_feature') }}">Access Premium Feature</a></p>
+        {% else %}
+            <p><a href="{{ url_for('main.premium_page') }}">Upgrade to Premium</a></p>
+        {% endif %}
+    {% else %}
+        <p><a href="{{ url_for('main.login') }}">Login</a> or <a href="{{ url_for('main.register') }}">Register</a> to get started.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>{{ item.name }}</h2>
+    <div class="item-details">
+        {% if item.image %}
+            <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="{{ item.name }}" width="300">
+        {% else %}
+            <div class="no-image-large">No Image Available</div>
+        {% endif %}
+        <p><strong>Category:</strong> {{ item.category }}</p>
+        <p><strong>Color:</strong> {{ item.color }}</p>
+        <!-- Add more details here if needed -->
+        <a href="{{ url_for('index') }}">Back to Closet</a>
+        <!-- Add links to edit/delete item -->
+    </div>
+{% endblock %}
