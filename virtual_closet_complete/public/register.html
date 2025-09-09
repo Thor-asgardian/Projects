@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup - AI Closet</title>
+<style>
+/* ================== RESET ================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ================== AUTH CONTAINER ================== */
+.auth-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.auth-container h1 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+}
+
+/* ================== FORM ================== */
+#signupForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#signupForm input[type="text"],
+#signupForm input[type="email"],
+#signupForm input[type="password"] {
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 2px solid rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+#signupForm input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+#signupForm input:focus {
+  outline: none;
+  border-color: #1abc9c;
+  background: rgba(255,255,255,0.15);
+}
+
+/* ================== BUTTON ================== */
+#signupForm button {
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(45deg, #1abc9c, #16a085);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+#signupForm button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ================== LINKS ================== */
+.auth-container p {
+  font-size: 0.95rem;
+  margin-top: 15px;
+}
+
+.auth-container a {
+  color: #1abc9c;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.auth-container a:hover {
+  color: #16a085;
+  text-decoration: underline;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 30px 20px;
+  }
+
+  .auth-container h1 {
+    font-size: 1.7rem;
+  }
+
+  #signupForm input, #signupForm button {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="auth-container">
+    <h1>Signup</h1>
+    <form id="signupForm">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Signup</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+</div>
+
+<script>
+const signupForm = document.getElementById('signupForm');
+const usernameInput = document.getElementById('username');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+
+function showMessage(msg, type = 'error') {
+    alert(msg); // Simple alert, can be replaced with styled message div
+}
+
+if (signupForm) {
+    signupForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const username = usernameInput.value.trim();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        if (!username || !email || !password) {
+            showMessage('Please fill in all fields.', 'error');
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, email, password })
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.token) {
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('username', username);
+
+                showMessage('Signup successful!', 'success');
+                window.location.href = 'dashboard.html';
+            } else {
+                showMessage(data.error || 'Signup failed', 'error');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            showMessage('Something went wrong. Please try again later.', 'error');
+        }
+    });
+}
+</script>
+
+</body>
+</html>

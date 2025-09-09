@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Closet - Landing Page</title>
+<style>
+/* ================== RESET ================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ================== HEADER ================== */
+header {
+  text-align: center;
+  padding: 60px 20px 40px;
+  background: linear-gradient(90deg, #e74c3c, #c0392b);
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+header nav {
+  margin-bottom: 10px;
+}
+
+header nav a {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 10px 25px;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #1abc9c, #16a085);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+header nav a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ================== MAIN ================== */
+main {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+main h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+main p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  background: #fff;
+  color: #e74c3c;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.btn-primary:hover {
+  background: #f1f1f1;
+  transform: translateY(-2px);
+}
+
+/* Hero image */
+.illustration {
+  max-width: 80%;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  margin-bottom: 50px;
+}
+
+/* Features section */
+.features {
+  max-width: 1000px;
+  margin: 0 auto 60px auto;
+  text-align: center;
+}
+
+.features h3 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.feature-card {
+  background: rgba(255,255,255,0.1);
+  padding: 25px 20px;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.feature-card strong {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  font-size: 1rem;
+}
+
+/* ================== FOOTER ================== */
+footer {
+  text-align: center;
+  padding: 25px 20px;
+  background: rgba(0,0,0,0.2);
+  color: #fff;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 768px) {
+  header h1 { font-size: 2rem; }
+  header nav a { padding: 8px 20px; font-size: 0.95rem; }
+  main h2 { font-size: 1.8rem; }
+  main p { font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+  header h1 { font-size: 1.7rem; }
+  main h2 { font-size: 1.5rem; }
+  main p { font-size: 0.9rem; }
+  .btn-primary { padding: 10px 20px; font-size: 0.9rem; }
+  .features h3 { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>👗 AI Closet</h1>
+  <nav>
+    <a href="login.html">Login</a>
+    <a href="register.html">Signup</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Welcome to AI Closet</h2>
+  <p>Your smart fashion assistant. Explore outfits, get AI suggestions, and organize your wardrobe.</p>
+  <a href="register.html" class="btn-primary">Get Started</a>
+
+  <img src="./images/illustration.png" alt="Fashion Illustration" class="illustration">
+
+  <section class="features">
+    <h3>Features</h3>
+    <div class="feature-cards">
+      <div class="feature-card">
+        <strong>Organize Your Closet</strong>
+        <p>Upload and save your favorite outfits for quick access anytime.</p>
+      </div>
+      <div class="feature-card">
+        <strong>AI Outfit Suggestions</strong>
+        <p>Get smart recommendations for different occasions using AI.</p>
+      </div>
+      <div class="feature-card">
+        <strong>Premium Insights</strong>
+        <p>Unlock advanced analysis, color matching, and trend alerts.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2025 AI Closet. All Rights Reserved.
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.querySelector('.btn-primary');
+  if (btn) {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      window.location.href = btn.getAttribute('href');
+    });
+  }
+
+  const illustration = document.querySelector('.illustration');
+  if (illustration) {
+    illustration.style.opacity = 0;
+    setTimeout(() => {
+      illustration.style.transition = 'opacity 1s ease-in';
+      illustration.style.opacity = 1;
+    }, 300);
+  }
+});
+</script>
+
+</body>
+</html>

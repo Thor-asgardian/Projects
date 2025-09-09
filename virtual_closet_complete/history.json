@@ -1,0 +1,172 @@
+[
+  {
+    "type": "analyze",
+    "imageUrl": "/uploads/1757427289848-795586630.jpeg",
+    "suggestions": [
+      "Pair with a black leather jacket for a night out.",
+      "Add white sneakers for a casual look.",
+      "Perfect for summer brunch events."
+    ],
+    "timestamp": "2025-09-09T14:14:49.851Z"
+  },
+  {
+    "type": "analyze",
+    "imageUrl": "/uploads/1757427436528-17268199.jpeg",
+    "suggestions": [
+      "Pair with a black leather jacket for a night out.",
+      "Add white sneakers for a casual look.",
+      "Perfect for summer brunch events."
+    ],
+    "timestamp": "2025-09-09T14:17:16.534Z"
+  },
+  {
+    "type": "analyze",
+    "imageUrl": "/uploads/1757429588623-241388440.jpeg",
+    "suggestions": [
+      "Pair with a black leather jacket for a night out.",
+      "Add white sneakers for a casual look.",
+      "Perfect for summer brunch events."
+    ],
+    "filename": "1757429588623-241388440.jpeg",
+    "originalName": "Casuals.jpeg",
+    "timestamp": "2025-09-09T14:53:08.665Z"
+  },
+  {
+    "type": "analyze",
+    "imageUrl": "/uploads/1757429795999-74621643.jpeg",
+    "suggestions": [
+      "Pair with a black leather jacket for a night out.",
+      "Add white sneakers for a casual look.",
+      "Perfect for summer brunch events."
+    ],
+    "filename": "1757429795999-74621643.jpeg",
+    "originalName": "Casuals.jpeg",
+    "timestamp": "2025-09-09T14:56:36.002Z"
+  },
+  {
+    "type": "analyze",
+    "imageUrl": "/uploads/1757434231847-Casuals.jpeg",
+    "analysis": {
+      "general_suggestion": "Your outfit combination works well!",
+      "reason": "Colors complement each other nicely.",
+      "premium_suggestion": "Add a stylish watch or bracelet.",
+      "additional_suggestions": [
+        "Pair with white sneakers",
+        "Add a denim jacket"
+      ],
+      "weather_tips": [
+        "Perfect for current weather"
+      ],
+      "rating": "good",
+      "confidence": 85,
+      "occasion": "casual",
+      "weather": "mild"
+    },
+    "timestamp": "2025-09-09T16:10:31.868Z"
+  },
+  {
+    "type": "analyze",
+    "imageUrl": "/uploads/1757434245664-Casuals.jpeg",
+    "analysis": {
+      "general_suggestion": "Your outfit combination works well!",
+      "reason": "Colors complement each other nicely.",
+      "premium_suggestion": "Add a stylish watch or bracelet.",
+      "additional_suggestions": [
+        "Pair with white sneakers",
+        "Add a denim jacket"
+      ],
+      "weather_tips": [
+        "Perfect for current weather"
+      ],
+      "rating": "good",
+      "confidence": 85,
+      "occasion": "casual",
+      "weather": "warm"
+    },
+    "timestamp": "2025-09-09T16:10:45.673Z"
+  },
+  {
+    "type": "analyze",
+    "imageUrl": "/uploads/1757434248238-Casuals.jpeg",
+    "analysis": {
+      "general_suggestion": "Your outfit combination works well!",
+      "reason": "Colors complement each other nicely.",
+      "premium_suggestion": "Add a stylish watch or bracelet.",
+      "additional_suggestions": [
+        "Pair with white sneakers",
+        "Add a denim jacket"
+      ],
+      "weather_tips": [
+        "Perfect for current weather"
+      ],
+      "rating": "good",
+      "confidence": 85,
+      "occasion": "casual",
+      "weather": "warm"
+    },
+    "timestamp": "2025-09-09T16:10:48.245Z"
+  },
+  {
+    "type": "analyze",
+    "imageUrl": "/uploads/1757434252477-Casuals.jpeg",
+    "analysis": {
+      "general_suggestion": "Your outfit combination works well!",
+      "reason": "Colors complement each other nicely.",
+      "premium_suggestion": "Add a stylish watch or bracelet.",
+      "additional_suggestions": [
+        "Pair with white sneakers",
+        "Add a denim jacket"
+      ],
+      "weather_tips": [
+        "Perfect for current weather"
+      ],
+      "rating": "good",
+      "confidence": 85,
+      "occasion": "casual",
+      "weather": "hot"
+    },
+    "timestamp": "2025-09-09T16:10:52.484Z"
+  },
+  {
+    "type": "analyze",
+    "imageUrl": "/uploads/1757434260528-Casuals.jpeg",
+    "analysis": {
+      "general_suggestion": "Your outfit combination works well!",
+      "reason": "Colors complement each other nicely.",
+      "premium_suggestion": "Add a stylish watch or bracelet.",
+      "additional_suggestions": [
+        "Pair with white sneakers",
+        "Add a denim jacket"
+      ],
+      "weather_tips": [
+        "Perfect for current weather"
+      ],
+      "rating": "good",
+      "confidence": 85,
+      "occasion": "casual",
+      "weather": "mild"
+    },
+    "timestamp": "2025-09-09T16:11:00.536Z"
+  },
+  {
+    "type": "analyze",
+    "imageUrl": "/uploads/1757437083878-Casuals.jpeg",
+    "analysis": {
+      "general_suggestion": "Your outfit combination works well!",
+      "reason": "Colors complement each other nicely.",
+      "premium_suggestion": "Add a stylish watch or bracelet.",
+      "additional_suggestions": [
+        "Pair with white sneakers",
+        "Add a denim jacket"
+      ],
+      "weather_tips": [
+        "Perfect for current weather"
+      ],
+      "rating": "good",
+      "confidence": 85,
+      "occasion": "casual",
+      "weather": "mild"
+    },
+    "timestamp": "2025-09-09T16:58:03.899Z"
+  }
+]

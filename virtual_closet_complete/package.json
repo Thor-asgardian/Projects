@@ -1,0 +1,38 @@
+{
+  "name": "ai-closet",
+  "version": "1.0.0",
+  "description": "AI Closet - Your Smart Fashion Assistant",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "install-deps": "npm install",
+    "setup": "npm run install-deps && mkdir uploads public"
+  },
+  "keywords": [
+    "fashion",
+    "ai",
+    "closet",
+    "style",
+    "outfit"
+  ],
+  "author": "AI Closet Team",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^4.21.2",
+    "express-rate-limit": "^6.10.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.32.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

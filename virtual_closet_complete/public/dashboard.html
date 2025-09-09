@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Closet Dashboard</title>
+<style>
+/* ================== RESET ================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ================== HEADER ================== */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+header button {
+    padding: 8px 18px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+header button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ================== UPLOAD SECTION ================== */
+#uploadSection {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 20px;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+#uploadSection h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+#uploadSection input,
+#uploadSection select,
+#uploadSection button {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: none;
+    font-size: 1rem;
+}
+
+#uploadSection select {
+    width: 50%;
+}
+
+#uploadSection button {
+    cursor: pointer;
+    font-weight: 600;
+    background: linear-gradient(45deg, #1abc9c, #16a085);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+#uploadSection button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#previewContainer img.preview-image {
+    max-width: 80%;
+    margin-top: 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ================== ANALYSIS RESULTS ================== */
+#analysisResults {
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    padding: 20px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 15px;
+    text-align: left;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+#analysisResults.hidden {
+    display: none;
+}
+
+#analysisResults h2 {
+    margin-bottom: 15px;
+}
+
+#analysisResults p {
+    margin: 8px 0;
+}
+
+/* ================== CLOSET SECTION ================== */
+#closetSection {
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+}
+
+#closetSection h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+#closetItems {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+}
+
+.outfit-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.1);
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.outfit-item img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.outfit-item .remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: #e74c3c;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.outfit-item .remove-btn:hover {
+    transform: scale(1.2);
+}
+
+.outfit-info {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 480px) {
+    #uploadSection select {
+        width: 80%;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+}
+</style>
+</head>
+<body>
+<header>
+    <h1>👗 AI Closet</h1>
+    <p>Your Smart Fashion Assistant</p>
+    <button id="logoutBtn">Logout</button>
+</header>
+
+<section id="uploadSection">
+    <h2>Upload Outfit</h2>
+    <input type="file" id="outfitUpload" accept="image/*">
+    <div id="previewContainer"></div>
+    <label for="occasion">Occasion:</label>
+    <select id="occasion">
+        <option value="casual">Casual</option>
+        <option value="formal">Formal</option>
+        <option value="party">Party</option>
+        <option value="work">Work</option>
+        <option value="date">Date</option>
+    </select> <br>
+    <label for="weather">Weather:</label>
+    <select id="weather">
+        <option value="mild">Mild</option>
+        <option value="cold">Cold</option>
+        <option value="warm">Warm</option>
+        <option value="hot">Hot</option>
+    </select> <br>
+    <button id="analyzeBtn">Analyze Outfit</button>
+    <button id="saveBtn">Save to Closet</button>
+    <div id="loading" style="display:none;">Analyzing...</div>
+</section>
+
+<section id="analysisResults" class="hidden">
+    <h2>Analysis Results</h2>
+    <p id="suggestion1"></p>
+    <p id="reason1"></p>
+    <p id="premiumSuggestion"></p>
+</section>
+
+<section id="closetSection">
+    <h2>Your Closet</h2>
+    <div id="closetItems"></div>
+</section>
+
+<script>
+
+        // ================== Global State ==================
+let closetItems = [];
+let currentOutfit = null;
+let selectedFile = null;
+
+// ================== Helper ==================
+function showLoading(show) {
+    const loading = document.getElementById('loading');
+    if (loading) loading.style.display = show ? 'block' : 'none';
+}
+
+// ================== File Upload Handling ==================
+const outfitUpload = document.getElementById('outfitUpload');
+const analyzeBtn = document.getElementById('analyzeBtn');
+const saveBtn = document.getElementById('saveBtn');
+
+if (outfitUpload) {
+    outfitUpload.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        selectedFile = file;
+        if (analyzeBtn) analyzeBtn.disabled = false;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            currentOutfit = e.target.result;
+            displayPreview(currentOutfit);
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
+function displayPreview(imageSrc) {
+    const container = document.getElementById('previewContainer');
+    if (!container) return;
+    container.innerHTML = `<img src="${imageSrc}" alt="Outfit Preview" class="preview-image">`;
+}
+
+// ================== Outfit Analysis ==================
+async function analyzeOutfitWithAPI() {
+    if (!selectedFile) {
+        alert('Please select an image first!');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('image', selectedFile);
+
+    const occasionInput = document.getElementById('occasion');
+    const weatherInput = document.getElementById('weather');
+
+    formData.append('occasion', occasionInput ? occasionInput.value : 'casual');
+    formData.append('weather', weatherInput ? weatherInput.value : 'mild');
+
+    try {
+        showLoading(true);
+        const resultsSection = document.getElementById('analysisResults');
+        resultsSection.classList.add('hidden');
+
+        const token = localStorage.getItem('token') || '';
+
+        const response = await fetch('/analyze', { 
+            method: 'POST', 
+            body: formData,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        const data = await response.json();
+        showLoading(false);
+
+        if (data && data.success) {
+            resultsSection.classList.remove('hidden');
+            document.getElementById('suggestion1').textContent = `Suggestion: ${data.analysis.general_suggestion}`;
+            document.getElementById('reason1').textContent = `Reason: ${data.analysis.reason}`;
+            document.getElementById('premiumSuggestion').textContent = `Premium: ${data.analysis.premium_suggestion}`;
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            alert('Analysis failed: ' + (data.error || 'Unknown error'));
+        }
+    } catch (error) {
+        showLoading(false);
+        console.error('Error:', error);
+        alert('Error analyzing outfit. Please try again.');
+    }
+}
+
+// ================== Closet Handling ==================
+function saveToCloset() {
+    if (!currentOutfit) {
+        alert('Please upload an outfit image first!');
+        return;
+    }
+
+    const occasionInput = document.getElementById('occasion');
+    const occasion = occasionInput ? occasionInput.value : 'casual';
+
+    const item = { id: Date.now(), image: currentOutfit, occasion, dateAdded: new Date().toLocaleDateString() };
+    closetItems.push(item);
+    displayClosetItems();
+    resetUploadSection();
+    alert('Outfit saved to your closet!');
+}
+
+function displayClosetItems() {
+    const container = document.getElementById('closetItems');
+    if (!container) return;
+
+    if (closetItems.length === 0) {
+        container.innerHTML = '<p>Your closet is empty. Upload some outfits!</p>';
+        return;
+    }
+
+    container.innerHTML = closetItems.map(item => `
+        <div class="outfit-item">
+            <img src="${item.image}" alt="Outfit ${item.id}">
+            <button class="remove-btn" onclick="removeFromCloset(${item.id})">×</button>
+            <div class="outfit-info">${item.occasion} - ${item.dateAdded}</div>
+        </div>
+    `).join('');
+}
+
+function removeFromCloset(id) {
+    closetItems = closetItems.filter(item => item.id !== id);
+    displayClosetItems();
+}
+
+function resetUploadSection() {
+    currentOutfit = null;
+    selectedFile = null;
+
+    const preview = document.getElementById('previewContainer');
+    if (preview) preview.innerHTML = '';
+
+    const uploadInput = document.getElementById('outfitUpload');
+    if (uploadInput) uploadInput.value = '';
+
+    const results = document.getElementById('analysisResults');
+    if (results) {
+        results.innerHTML = '';
+        results.classList.add('hidden');
+    }
+
+    if (analyzeBtn) analyzeBtn.disabled = true;
+}
+
+// ================== Logout Handling ==================
+const logoutBtn = document.getElementById('logoutBtn');
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        window.location.href = 'login.html';
+    });
+}
+
+// ================== Event Listeners ==================
+if (analyzeBtn) analyzeBtn.addEventListener('click', analyzeOutfitWithAPI);
+if (saveBtn) saveBtn.addEventListener('click', saveToCloset);
+
+// ================== Initial Render ==================
+displayClosetItems();
+if (analyzeBtn) analyzeBtn.disabled = true;
+
+    </script>
+</body>
+</html>
