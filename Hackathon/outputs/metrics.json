@@ -1,0 +1,21 @@
+{
+  "f1_macro": 0.9949968730456537,
+  "f1_weighted": 0.9949968730456535,
+  "cv_mean": 0.9937143049757065,
+  "cv_std": 0.006907282374835717,
+  "train_samples": 800,
+  "test_samples": 200,
+  "categories": [
+    "Coffee/Dining",
+    "Education",
+    "Entertainment",
+    "Fitness",
+    "Fuel",
+    "Groceries",
+    "Healthcare",
+    "Shopping",
+    "Transportation",
+    "Utilities"
+  ],
+  "timestamp": "2025-11-20T23:43:15.222621"
+}
